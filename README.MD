@@ -2,15 +2,16 @@
 
 Установка:
 
-Из директории TerminalGame
+Из директории CatchUpGame
+
 ```
 mvn install
 ```
 Запуск игры:
 
-Из директории TerminalGame:
+Из директории CatchUpGame:
 ```
-java -jar target/game.jar --enemiesCount=10 --wallsCount=10 --size=30 --profile=production
+java -jar target/game-jar-with-dependencies.jar --enemiesCount=10 --wallsCount=10 --size=30 --profile=production
 ```
 Для изменения режима игры:
 ```
