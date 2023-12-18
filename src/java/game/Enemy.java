@@ -2,12 +2,13 @@ package game;
 
 import com.diogonunes.jcdp.color.api.Ansi;
 
-public class Enemy extends GameObject {
+public class Enemy extends GameObject implements Runnable{
     public Enemy(Ansi.BColor color, char simb, Game.objType type, Position position) {
         super(color, simb, type, position);
     }
 
-    public void kill() {
+    @Override
+    public void run() {
         Position enemyPos = this.getPosition();
         Position gamerPos = GameMap.getGamer().getPosition();
         if (enemyPos.isNear(gamerPos)) {

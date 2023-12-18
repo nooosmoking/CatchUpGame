@@ -138,7 +138,7 @@ public class GameMap {
         return enemies;
     }
 
-    public static void switchPositions(Position pos1, Position pos2) {
+    public synchronized static void switchPositions(Position pos1, Position pos2) {
         GameObject tmp = map[pos1.getY()][pos1.getX()];
         map[pos1.getY()][pos1.getX()] = map[pos2.getY()][pos2.getX()];
         map[pos1.getY()][pos1.getX()].setPos(pos1);

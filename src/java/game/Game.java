@@ -38,7 +38,7 @@ public class Game {
 
     private void handleProductionProfile() {
         for (Enemy enemy : GameMap.getEnemies()) {
-            enemy.kill();
+            enemy.run();
         }
     }
 
@@ -47,7 +47,7 @@ public class Game {
         for (Enemy enemy : GameMap.getEnemies()) {
             System.out.println("Enter 8 for enemy movement");
             AnswerChecker.checkMoveEnemy();
-            enemy.kill();
+            enemy.run();
             GameMap.draw();
         }
         System.out.println("Enemy movements are over, use AWSD to move around");
