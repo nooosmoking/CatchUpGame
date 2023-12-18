@@ -12,14 +12,14 @@ public class Enemy extends GameObject {
         Position gamerPos = GameMap.getGamer().getPosition();
         if (enemyPos.isNear(gamerPos)) {
             GameMap.draw();
-           Exiter.exitFail();
+            Exiter.exitFail();
         }
         Position newPos = ChaseLogic.findFirstStep(GameMap.getMap(), enemyPos, gamerPos);
 
         if (newPos != null) {
             GameMap.switchPositions(this.getPosition(), newPos);
         }
-        if (this.getPosition().isNear(gamerPos)){
+        if (this.getPosition().isNear(gamerPos)) {
             GameMap.draw();
             Exiter.exitFail();
         }

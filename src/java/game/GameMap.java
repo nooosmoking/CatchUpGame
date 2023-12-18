@@ -17,14 +17,14 @@ public class GameMap {
     private static LinkedList<Enemy> enemies;
     private GameObject target;
 
-    public GameMap(int sizeMap, int enemiesCount, int wallsCount)  {
-        this.printer = new ColoredPrinter();
+    public GameMap(int sizeMap, int enemiesCount, int wallsCount) {
+        printer = new ColoredPrinter();
         size = sizeMap;
         map = new GameObject[size][size];
         this.enemiesCount = enemiesCount;
         this.wallsCount = wallsCount;
         enemies = new LinkedList<>();
-        try{
+        try {
             setAllObjects(0);
         } catch (IllegalParametersException ex) {
             Exiter.exitWithMsg(ex.getMessage());
@@ -32,8 +32,8 @@ public class GameMap {
     }
 
     private void setAllObjects(int depth) throws IllegalParametersException {
-        if (depth >2000 ){
-            throw new IllegalParametersException("Reduce the number of enemies and obstacles or increase the field size");
+        if (depth > 2000) {
+            throw new IllegalParametersException("Reduce the count of enemies and obstacles or increase the field size");
         }
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -49,12 +49,12 @@ public class GameMap {
         for (int i = 0; i < enemiesCount; i++) {
             setObject(Game.objType.ENEMY, depth);
         }
-            setObject(Game.objType.GAMER, depth);
-            setObject(Game.objType.TARGET, depth);
+        setObject(Game.objType.GAMER, depth);
+        setObject(Game.objType.TARGET, depth);
     }
 
-    private void setObject(Game.objType type, int depth) throws IllegalParametersException{
-        if (depth >2000 ){
+    private void setObject(Game.objType type, int depth) throws IllegalParametersException {
+        if (depth > 2000) {
             throw new IllegalParametersException("Reduce the number of enemies and obstacles or increase the field size");
         }
         GameObject object = null;
@@ -91,8 +91,8 @@ public class GameMap {
         }
     }
 
-    private Position findGamerPos(Position gamerPos,  int depth) throws IllegalParametersException {
-        if (depth >2000 ){
+    private Position findGamerPos(Position gamerPos, int depth) throws IllegalParametersException {
+        if (depth > 2000) {
             throw new IllegalParametersException("Reduce the number of enemies and obstacles or increase the field size");
         }
         for (int i = 0; i < size * size - wallsCount - enemiesCount && checkEnemiesAround(gamerPos); i++) {
@@ -120,8 +120,6 @@ public class GameMap {
 
     public static void draw() {
         GameObject currObj;
-        System.out.print("\u001b[2J");
-        System.out.flush();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 currObj = map[i][j];

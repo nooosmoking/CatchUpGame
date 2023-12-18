@@ -62,9 +62,9 @@ public class ScanConfigFile {
         return wallColor;
     }
 
-    public void scanFile(String profile) {
+    public static void scanFile(boolean isDev) {
         File file;
-        if (profile.equals("development")) {
+        if (isDev) {
             file = new File(profileDev);
         } else {
             file = new File(profileProduction);
@@ -85,7 +85,7 @@ public class ScanConfigFile {
             goalColor = Ansi.BColor.valueOf(properties.getProperty("goal.color"));
             emptyColor = Ansi.BColor.valueOf(properties.getProperty("empty.color"));
             wallColor = Ansi.BColor.valueOf(properties.getProperty("wall.color"));
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | StringIndexOutOfBoundsException e) {
             Exiter.exitWithMsg("Incorrect properties file");
         } catch (NullPointerException e) {
             Exiter.exitWithMsg("Check the configuration file is correct");

@@ -31,5 +31,7 @@ public class GameObject {
         return type;
     }
 
-    public void setPos(Position pos){this.position = pos;}
+    public void setPos(Position pos) {
+        this.position = pos;
+    }
 }

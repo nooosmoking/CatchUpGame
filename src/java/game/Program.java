@@ -6,15 +6,13 @@ import game.exeptions.IllegalParametersException;
 
 public class Program {
 
-
     public static void main(String[] args) {
         Args jArgs = new Args();
         JCommander JCommander = new JCommander(jArgs);
         try {
             try {
                 JCommander.parse(args);
-                ScanConfigFile scanConfigFile = new ScanConfigFile();
-                scanConfigFile.scanFile(jArgs.getProfile());
+                ScanConfigFile.scanFile(jArgs.isDevProfile());
                 checkArgs(jArgs);
             } catch (ParameterException ex) {
                 throw new IllegalParametersException(ex.getMessage());
@@ -35,7 +33,7 @@ public class Program {
             throw new IllegalParametersException("Reduce the count of enemies and obstacles or increase the field size");
         }
 
-        if (!jArgs.isValidProfile(jArgs.getProfile())) {
+        if (!jArgs.isValidProfile()) {
             throw new IllegalParametersException("Invalid profile mode");
         }
     }

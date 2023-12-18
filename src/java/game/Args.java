@@ -33,11 +33,11 @@ public class Args {
         return profile;
     }
 
-    public boolean isValidProfile(String profile) {
+    public boolean isValidProfile() {
         return "production".equals(profile) || "development".equals(profile);
     }
 
-    public boolean isDevProfile(String profile) {
+    public boolean isDevProfile() {
         return profile.equals("development");
     }
 }

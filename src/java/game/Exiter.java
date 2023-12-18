@@ -10,7 +10,9 @@ import java.io.File;
 public class Exiter {
     public static void exitWithMsg(String msg) {
         System.err.println(msg);
+        AnswerChecker.closeScanner();
         System.exit(-1);
+        AnswerChecker.closeScanner();
     }
 
     public static void exitWin() {
@@ -20,20 +22,23 @@ public class Exiter {
         } catch (Exception ex) {
             System.out.println("You win!");
         }
+        AnswerChecker.closeScanner();
         System.exit(0);
     }
 
     public static void exitFail() {
         File file = checkFile("lose.bmp");
-            try {
-                printImg(file);
-            } catch (Exception ex) {
-                System.out.println("You lose!");
-            }
+        try {
+            printImg(file);
+        } catch (Exception ex) {
+            System.out.println("You lose!");
+        }
+        AnswerChecker.closeScanner();
         System.exit(0);
     }
 
     public static void printImg(File file) throws Exception {
+        System.out.println();
         BufferedImage image = ImageIO.read(file);
         ColoredPrinter printer = new ColoredPrinter();
 
@@ -63,8 +68,7 @@ public class Exiter {
                 return file;
             }
         } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-            System.exit(-1);
+            exitWithMsg(ex.getMessage());
         }
         return null;
     }

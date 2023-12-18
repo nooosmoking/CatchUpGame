@@ -27,4 +27,8 @@ public class AnswerChecker {
             }
         } while (repeat);
     }
+
+    public static void closeScanner() {
+        in.close();
+    }
 }

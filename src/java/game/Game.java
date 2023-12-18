@@ -14,12 +14,11 @@ public class Game {
 
     public Game(Args jArgs) {
         map = new GameMap(jArgs.getSize(), jArgs.getEnemiesCount(), jArgs.getWallsCount());
-        profileDev = jArgs.isDevProfile(jArgs.getProfile());
+        profileDev = jArgs.isDevProfile();
     }
 
     public void run() {
         String answer = null;
-        boolean fail = false;
         while (true) {
             GameMap.draw();
             answer = AnswerChecker.checkMoveGamer();
